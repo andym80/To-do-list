@@ -2,8 +2,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-		entry: './src/index.js',
 		mode: 'development',
+		entry: {
+		index: './src/index.js',
+		print: './src/gen_html.js',
+		check: './src/check_complete.js',
+		},
 		devServer: {
 		static: './dist',
 		},
@@ -22,6 +26,11 @@ module.exports = {
 		{
 		test: /\.css$/i,
 		use: ['style-loader', 'css-loader'],
+		},
+		{
+		test: /\.(jpe?g|png|gif|svg)$/,
+		type: 'asset/resource'
+
 		},
 		],
 		},
