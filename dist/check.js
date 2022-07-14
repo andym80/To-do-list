@@ -15,7 +15,7 @@
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ checkComplete)\n/* harmony export */ });\nfunction checkComplete(arr) {\n\tconst checkboxes = document.querySelectorAll('.checkbox');\n\tfor (let i = 0; i < arr.length; i += 1) {\n\t  arr[i].completed = checkboxes[i].checked;\n\t}\n\tlocalStorage.setItem('todoList', JSON.stringify(arr));\n  }\n\n//# sourceURL=webpack://webpack-tutorial/./src/check_complete.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ checkComplete)\n/* harmony export */ });\nfunction checkComplete(arr) {\n  const checkboxes = document.querySelectorAll('.checkbox');\n  for (let i = 0; i < arr.length; i += 1) {\n    arr[i].completed = checkboxes[i].checked;\n  }\n  localStorage.setItem('todoList', JSON.stringify(arr));\n}\n\n//# sourceURL=webpack://webpack-tutorial/./src/check_complete.js?");
 
 /***/ })
 

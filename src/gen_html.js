@@ -1,5 +1,5 @@
-import checkComplete from './check_complete';
-import remove from './remove';
+import checkComplete from './check_complete.js';
+import remove from './remove.js';
 
 export default function genHTML(list, arr) {
   for (let i = 0; i < arr.length; i += 1) {

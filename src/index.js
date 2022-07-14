@@ -1,5 +1,5 @@
-import genHTML from './gen_html';
-import addNew from './add';
+import genHTML from './gen_html.js';
+import addNew from './add.js';
 import './style.css';
 
 let listArr = [];
@@ -51,14 +51,6 @@ addNewBtn.addEventListener('click', () => {
   }
 });
 
-//tap Enter key	to add new task
-document.getElementById("add-item").addEventListener("text", enterText);
-
-function enterText(event) {
-    event.preventDefault();
-};
-
-
 const clrBtn = document.getElementById('clear-all');
 clrBtn.addEventListener('click', () => {
   for (let i = 0; i < listArr.length; i += 1) {
@@ -75,5 +67,3 @@ clrBtn.addEventListener('click', () => {
   localStorage.setItem('todoList', JSON.stringify(listArr));
   reload();
 });
-
-
