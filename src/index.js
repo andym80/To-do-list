@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import genHTML from './gen_html.js';
 import addNew from './add.js';
 import './style.css';
