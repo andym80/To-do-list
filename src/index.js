@@ -11,7 +11,7 @@ const reload = () => {
   if (localStorage.getItem('todoList')) {
     const oldStorage = localStorage.getItem('todoList');
     const newStorage = JSON.parse(oldStorage);
-    list.innerHTML = '';
+    list.textContent = '';
     listArr = newStorage;
     genHTML(list, listArr);
   } else {
@@ -54,17 +54,16 @@ addNewBtn.addEventListener('click', () => {
 
 const clrBtn = document.getElementById('clear-all');
 clrBtn.addEventListener('click', () => {
-  for (let i = 0; i < listArr.length; i += 1) {
-    if (listArr[i].completed) {
-      listArr.splice(i, 1);
-      listArr.forEach((task) => {
-        if (task.index > i) {
-          task.index -= 1;
-        }
-      });
-      i -= 1;
-    }
-  }
+  listArr = listArr.filter((element) => element.completed === false);
+  listArr.forEach((element, index) => {
+    element.index = index + 1;
+  });
+
   localStorage.setItem('todoList', JSON.stringify(listArr));
   reload();
+});
+
+const checkBtn = document.getElementById('check-all');
+checkBtn.addEventListener('click', () => {
+
 });
