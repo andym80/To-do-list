@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
-import genHTML from './gen_html.js';
-import addNew from './add.js';
+import genHTML from './modules/gen_html.js';
+import addNew from './modules/add.js';
 import './style.css';
 
 let listArr = [];

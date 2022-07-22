@@ -109,53 +109,53 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
-/***/ "./src/add.js":
-/*!********************!*\
-  !*** ./src/add.js ***!
-  \********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ addNew)\n/* harmony export */ });\nfunction addNew(task, num) {\n  const newTask = {\n    description: task,\n    completed: false,\n    index: num,\n  };\n  return newTask;\n}\n\n//# sourceURL=webpack://webpack-tutorial/./src/add.js?");
-
-/***/ }),
-
-/***/ "./src/check_complete.js":
-/*!*******************************!*\
-  !*** ./src/check_complete.js ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ checkComplete)\n/* harmony export */ });\nfunction checkComplete(arr) {\n  const checkboxes = document.querySelectorAll('.checkbox');\n  for (let i = 0; i < arr.length; i += 1) {\n    arr[i].completed = checkboxes[i].checked;\n  }\n  localStorage.setItem('todoList', JSON.stringify(arr));\n}\n\n//# sourceURL=webpack://webpack-tutorial/./src/check_complete.js?");
-
-/***/ }),
-
-/***/ "./src/gen_html.js":
-/*!*************************!*\
-  !*** ./src/gen_html.js ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ genHTML)\n/* harmony export */ });\n/* harmony import */ var _check_complete_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./check_complete.js */ \"./src/check_complete.js\");\n/* harmony import */ var _remove_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./remove.js */ \"./src/remove.js\");\n\n\n\nfunction genHTML(list, arr) {\n  for (let i = 0; i < arr.length; i += 1) {\n    const item = document.createElement('li');\n    const descCont = document.createElement('div');\n    const checkbox = document.createElement('input');\n    const desc = document.createElement('label');\n    const itemIcon = document.createElement('i');\n\n    descCont.classList.add('description-container');\n    checkbox.type = 'checkbox';\n    checkbox.addEventListener('change', () => {\n      (0,_check_complete_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(arr);\n      list.innerHTML = '';\n      genHTML(list, arr);\n    });\n    checkbox.id = `checkbox-${i}`;\n    checkbox.classList.add('checkbox');\n    checkbox.checked = arr[i].completed;\n    desc.htmlFor = `checkbox-${i}`;\n    desc.innerHTML = arr[i].description;\n    if (checkbox.checked) {\n      desc.classList.add('done');\n    }\n    itemIcon.classList.add('add-btn', 'fa-ellipsis-v', 'item-icon');\n\n    itemIcon.addEventListener('click', () => {\n      if (itemIcon.classList.contains('red')) {\n        (0,_remove_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(i, arr);\n        arr.forEach((item) => {\n          if (item.index > i) {\n            item.index -= 1;\n          }\n        });\n        localStorage.setItem('todoList', JSON.stringify(arr));\n        list.innerHTML = '';\n        genHTML(list, arr);\n      }\n    });\n\n    desc.addEventListener('click', () => {\n      desc.setAttribute('contenteditable', 'true');\n    });\n    desc.addEventListener('click', (e) => {\n      e.preventDefault();\n    }, false);\n    desc.addEventListener('focus', () => {\n      desc.parentElement.parentElement.classList.add('bisque-bkg');\n      desc.parentElement.nextElementSibling.classList.add('red');\n      desc.parentElement.nextElementSibling.classList.replace('fa-ellipsis-v', 'fa-trash-alt');\n    });\n    desc.addEventListener('blur', () => {\n      arr[i].description = desc.innerHTML;\n      localStorage.setItem('todoList', JSON.stringify(arr));\n      setTimeout(() => {\n        desc.parentElement.parentElement.classList.remove('bisque-bkg');\n        desc.parentElement.nextElementSibling.classList.remove('red');\n        desc.parentElement.nextElementSibling.classList.replace('fa-trash-alt', 'fa-ellipsis-v');\n        desc.setAttribute('contenteditable', 'false');\n      }, 150);\n    });\n\n    descCont.appendChild(checkbox);\n    descCont.appendChild(desc);\n\n    item.appendChild(descCont);\n    item.appendChild(itemIcon);\n\n    list.appendChild(item);\n  }\n}\n\n\n//# sourceURL=webpack://webpack-tutorial/./src/gen_html.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _gen_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gen_html.js */ \"./src/gen_html.js\");\n/* harmony import */ var _add_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./add.js */ \"./src/add.js\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* eslint-disable no-alert */\n\n\n\n\nlet listArr = [];\n\nconst list = document.getElementById('list');\n\nconst reload = () => {\n  if (localStorage.getItem('todoList')) {\n    const oldStorage = localStorage.getItem('todoList');\n    const newStorage = JSON.parse(oldStorage);\n    list.textContent = '';\n    listArr = newStorage;\n    (0,_gen_html_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(list, listArr);\n  } else {\n    const defaultItem = [\n      {\n        description: 'Add your first task',\n        completed: false,\n        index: 1,\n      },\n    ];\n    const newStorage = JSON.stringify(defaultItem);\n    listArr = defaultItem;\n    localStorage.setItem('todoList', newStorage);\n    list.innerHTML = '';\n    (0,_gen_html_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(list, JSON.parse(newStorage));\n  }\n  const checkboxes = document.querySelectorAll('.checkbox');\n  for (let i = 0; i < checkboxes.length; i += 1) {\n    checkboxes[i].addEventListener('change', () => {\n      reload();\n    });\n  }\n};\n\nwindow.onload = reload();\n\nconst task = document.getElementById('add-item');\nconst addNewBtn = document.getElementById('add-new-btn');\naddNewBtn.addEventListener('click', () => {\n  if (task.value.length > 0) {\n    listArr.push((0,_add_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(task.value, listArr.length + 1));\n    const newStorage = JSON.stringify(listArr);\n    localStorage.setItem('todoList', newStorage);\n    task.value = '';\n    reload();\n  } else {\n    alert('Tasks must contain text.\\nTry typing something into the \"Add to your list...\" input.');\n  }\n});\n\nconst clrBtn = document.getElementById('clear-all');\nclrBtn.addEventListener('click', () => {\n  listArr = listArr.filter((element) => element.completed === false);\n  listArr.forEach((element, index) => {\n    element.index = index + 1;\n  });\n\n  localStorage.setItem('todoList', JSON.stringify(listArr));\n  reload();\n});\n\nconst checkBtn = document.getElementById('check-all');\ncheckBtn.addEventListener('click', () => {\n\n});\n\n//# sourceURL=webpack://webpack-tutorial/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_gen_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/gen_html.js */ \"./src/modules/gen_html.js\");\n/* harmony import */ var _modules_add_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/add.js */ \"./src/modules/add.js\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* eslint-disable no-alert */\n\n\n\n\nlet listArr = [];\n\nconst list = document.getElementById('list');\n\nconst reload = () => {\n  if (localStorage.getItem('todoList')) {\n    const oldStorage = localStorage.getItem('todoList');\n    const newStorage = JSON.parse(oldStorage);\n    list.textContent = '';\n    listArr = newStorage;\n    (0,_modules_gen_html_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(list, listArr);\n  } else {\n    const defaultItem = [\n      {\n        description: 'Add your first task',\n        completed: false,\n        index: 1,\n      },\n    ];\n    const newStorage = JSON.stringify(defaultItem);\n    listArr = defaultItem;\n    localStorage.setItem('todoList', newStorage);\n    list.innerHTML = '';\n    (0,_modules_gen_html_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(list, JSON.parse(newStorage));\n  }\n  const checkboxes = document.querySelectorAll('.checkbox');\n  for (let i = 0; i < checkboxes.length; i += 1) {\n    checkboxes[i].addEventListener('change', () => {\n      reload();\n    });\n  }\n};\n\nwindow.onload = reload();\n\nconst task = document.getElementById('add-item');\nconst addNewBtn = document.getElementById('add-new-btn');\naddNewBtn.addEventListener('click', () => {\n  if (task.value.length > 0) {\n    listArr.push((0,_modules_add_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(task.value, listArr.length + 1));\n    const newStorage = JSON.stringify(listArr);\n    localStorage.setItem('todoList', newStorage);\n    task.value = '';\n    reload();\n  } else {\n    alert('Tasks must contain text.\\nTry typing something into the \"Add to your list...\" input.');\n  }\n});\n\nconst clrBtn = document.getElementById('clear-all');\nclrBtn.addEventListener('click', () => {\n  listArr = listArr.filter((element) => element.completed === false);\n  listArr.forEach((element, index) => {\n    element.index = index + 1;\n  });\n\n  localStorage.setItem('todoList', JSON.stringify(listArr));\n  reload();\n});\n\nconst checkBtn = document.getElementById('check-all');\ncheckBtn.addEventListener('click', () => {\n\n});\n\n\n//# sourceURL=webpack://webpack-tutorial/./src/index.js?");
 
 /***/ }),
 
-/***/ "./src/remove.js":
-/*!***********************!*\
-  !*** ./src/remove.js ***!
-  \***********************/
+/***/ "./src/modules/add.js":
+/*!****************************!*\
+  !*** ./src/modules/add.js ***!
+  \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ remove)\n/* harmony export */ });\nfunction remove(num, list) {\n  list.splice(num, 1);\n  localStorage.setItem('todoList', JSON.stringify(list));\n}\n\n\n//# sourceURL=webpack://webpack-tutorial/./src/remove.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ addNew)\n/* harmony export */ });\nfunction addNew(task, num) {\n  const newTask = {\n    description: task,\n    completed: false,\n    index: num,\n  };\n  return newTask;\n}\n\n//# sourceURL=webpack://webpack-tutorial/./src/modules/add.js?");
+
+/***/ }),
+
+/***/ "./src/modules/check_complete.js":
+/*!***************************************!*\
+  !*** ./src/modules/check_complete.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ checkComplete)\n/* harmony export */ });\nfunction checkComplete(arr) {\n  const checkboxes = document.querySelectorAll('.checkbox');\n  for (let i = 0; i < arr.length; i += 1) {\n    arr[i].completed = checkboxes[i].checked;\n  }\n  localStorage.setItem('todoList', JSON.stringify(arr));\n}\n\n//# sourceURL=webpack://webpack-tutorial/./src/modules/check_complete.js?");
+
+/***/ }),
+
+/***/ "./src/modules/gen_html.js":
+/*!*********************************!*\
+  !*** ./src/modules/gen_html.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ genHTML)\n/* harmony export */ });\n/* harmony import */ var _check_complete_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./check_complete.js */ \"./src/modules/check_complete.js\");\n/* harmony import */ var _remove_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./remove.js */ \"./src/modules/remove.js\");\n\n\n\nfunction genHTML(list, arr) {\n  for (let i = 0; i < arr.length; i += 1) {\n    const item = document.createElement('li');\n    const descCont = document.createElement('div');\n    const checkbox = document.createElement('input');\n    const desc = document.createElement('label');\n    const itemIcon = document.createElement('i');\n\n    descCont.classList.add('description-container');\n    checkbox.type = 'checkbox';\n    checkbox.addEventListener('change', () => {\n      (0,_check_complete_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(arr);\n      list.innerHTML = '';\n      genHTML(list, arr);\n    });\n    checkbox.id = `checkbox-${i}`;\n    checkbox.classList.add('checkbox');\n    checkbox.checked = arr[i].completed;\n    desc.htmlFor = `checkbox-${i}`;\n    desc.textContent = arr[i].description;\n    if (checkbox.checked) {\n      desc.classList.add('done');\n    }\n    itemIcon.classList.add('add-btn', 'fa-ellipsis-v', 'item-icon');\n\n    itemIcon.addEventListener('click', () => {\n      if (itemIcon.classList.contains('red')) {\n        (0,_remove_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(i, arr);\n        arr.forEach((item) => {\n          if (item.index > i) {\n            item.index -= 1;\n          }\n        });\n        localStorage.setItem('todoList', JSON.stringify(arr));\n        list.innerHTML = '';\n        genHTML(list, arr);\n      }\n    });\n\n    desc.addEventListener('click', () => {\n      desc.setAttribute('contenteditable', 'true');\n      // e.preventDefault();\n    });\n    // desc.addEventListener('click', (e) => {\n    // }, false);\n\n    desc.addEventListener('focus', () => {\n      desc.parentElement.parentElement.classList.add('bisque-bkg');\n      desc.parentElement.nextElementSibling.classList.add('red');\n      desc.parentElement.nextElementSibling.classList.replace('fa-ellipsis-v', 'fa-trash-alt');\n    });\n    desc.addEventListener('blur', () => {\n      arr[i].description = desc.innerHTML;\n      localStorage.setItem('todoList', JSON.stringify(arr));\n      setTimeout(() => {\n        desc.parentElement.parentElement.classList.remove('bisque-bkg');\n        desc.parentElement.nextElementSibling.classList.remove('red');\n        desc.parentElement.nextElementSibling.classList.replace('fa-trash-alt', 'fa-ellipsis-v');\n        desc.setAttribute('contenteditable', 'false');\n      }, 150);\n    });\n\n    descCont.appendChild(checkbox);\n    descCont.appendChild(desc);\n\n    item.appendChild(descCont);\n    item.appendChild(itemIcon);\n\n    list.appendChild(item);\n  }\n}\n\n\n//# sourceURL=webpack://webpack-tutorial/./src/modules/gen_html.js?");
+
+/***/ }),
+
+/***/ "./src/modules/remove.js":
+/*!*******************************!*\
+  !*** ./src/modules/remove.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ remove)\n/* harmony export */ });\nfunction remove(num, list) {\n  list.splice(num, 1);\n  localStorage.setItem('todoList', JSON.stringify(list));\n}\n\n\n//# sourceURL=webpack://webpack-tutorial/./src/modules/remove.js?");
 
 /***/ })
 

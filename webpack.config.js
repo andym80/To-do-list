@@ -5,8 +5,8 @@ module.exports = {
   mode: 'development',
   entry: {
     index: './src/index.js',
-    print: './src/gen_html.js',
-    check: './src/check_complete.js',
+    print: './src/modules/gen_html.js',
+    check: './src/modules/check_complete.js',
   },
   devServer: {
     static: './dist',
