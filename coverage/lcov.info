@@ -1,5 +1,5 @@
 TN:
-SF:src/add.js
+SF:src/modules/add.js
 FN:1,addNew
 FNF:1
 FNH:1
@@ -12,7 +12,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/remove.js
+SF:src/modules/remove.js
 FN:1,remove
 FNF:1
 FNH:1

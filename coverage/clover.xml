@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1658514841797" clover="3.2.0">
-  <project timestamp="1658514841797" name="All files">
+<coverage generated="1658516156351" clover="3.2.0">
+  <project timestamp="1658516156351" name="All files">
     <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="6" coveredelements="6" complexity="0" loc="4" ncloc="4" packages="1" files="2" classes="2"/>
-    <file name="add.js" path="/home/sabry/microverse/To-do-list/src/add.js">
+    <file name="add.js" path="/home/sabry/microverse/To-do-list/src/modules/add.js">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <line num="2" count="1" type="stmt"/>
       <line num="7" count="1" type="stmt"/>
     </file>
-    <file name="remove.js" path="/home/sabry/microverse/To-do-list/src/remove.js">
+    <file name="remove.js" path="/home/sabry/microverse/To-do-list/src/modules/remove.js">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <line num="2" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>

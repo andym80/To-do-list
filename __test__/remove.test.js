@@ -1,6 +1,6 @@
 /* import { iteratee } from 'lodash'; */
 // import { get } from 'lodash';
-import remove from './remove.js';
+import remove from '../src/modules/remove.js';
 
 describe('remove', () => {
   const list = [{
