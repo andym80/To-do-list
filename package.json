@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "jest --coverage --watch",
+    "test": "jest --coverage --watchAll",
     "build": "webpack",
     "start": "webpack serve --open",
     "dev": "webpack --mode development"
