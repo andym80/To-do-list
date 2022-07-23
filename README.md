@@ -7,6 +7,7 @@
 - HTML/CSS
 - JavaScript
 - Webpack
+- Jest
 
 ## Live Demo
 [Live Demo](https://andym80.github.io/To-do-list/)
