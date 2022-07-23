@@ -1,5 +1,3 @@
-/* import { iteratee } from 'lodash'; */
-// import { get } from 'lodash';
 import remove from '../src/modules/remove.js';
 
 describe('remove', () => {
@@ -30,5 +28,4 @@ describe('remove', () => {
     remove(num, list);
     expect(localStorage.getItem('todoList')).toEqual(JSON.stringify(newList));
   });
-/* xpect setItem('key', 'value'); */
 });

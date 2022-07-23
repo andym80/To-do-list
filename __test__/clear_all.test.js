@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-// import checkComplete from "../src/modules/check_complete.js";
 import clearAll from '../src/modules/clear_all.js';
 import genHTML from '../src/modules/gen_html.js';
 
@@ -51,8 +50,6 @@ beforeAll(() => {
 
 it('clear all checked tasks', () => {
   document.getElementById('checkbox-2').click();
-  // document.getElementById('clear-all').click();
   clearAll(JSON.parse(localStorage.getItem('todoList')));
-  // console.log(JSON.parse(localStorage.getItem('todoList')));
   expect(JSON.parse(localStorage.getItem('todoList')).length).toBe(2);
 });
