@@ -2,9 +2,9 @@
  * @jest-environment jsdom
  */
 
-import genHTML from "../src/modules/gen_html"
+import genHTML from '../src/modules/gen_html.js';
 
-beforeEach(()=>{
+beforeEach(() => {
   document.body.innerHTML = `
   <main>
     <div class="heading container">
@@ -23,7 +23,6 @@ beforeEach(()=>{
     </div>
   </main>
   `;
-
 
   const list = document.getElementById('list');
 
@@ -46,38 +45,37 @@ beforeEach(()=>{
   ];
 
   genHTML(list, defaultItem);
-})
+});
 
-describe('edit description', () =>{
-
-  it('enter submit with click', () =>{
+describe('edit description', () => {
+  it('enter submit with click', () => {
     const desc = document.getElementById('label-0');
 
     desc.click();
     expect(desc.getAttribute('contenteditable')).toBe('true');
   });
 
-  it('submit edit fails', () =>{
+  it('submit edit fails', () => {
     const desc = document.getElementById('label-0');
     desc.click();
     desc.value = 'new task';
-    desc.dispatchEvent(new KeyboardEvent('keydown',{'key':'a'}));
+    desc.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
 
     expect(JSON.parse(localStorage.getItem('todoList'))).toBe(null);
   });
 
-  it('submit edit', () =>{
+  it('submit edit', () => {
     const desc = document.getElementById('label-0');
     desc.click();
     desc.value = 'new task';
-    desc.dispatchEvent(new KeyboardEvent('keydown',{'key':'Enter'}));
+    desc.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
 
     expect(JSON.parse(localStorage.getItem('todoList'))[0].description).toBe('new task');
   });
 });
 
 describe('remove task', () => {
-  it('enter remove mode with click', () =>{
+  it('enter remove mode with click', () => {
     const desc = document.getElementById('label-0');
     desc.click();
     expect(desc.getAttribute('contenteditable')).toBe('true');
