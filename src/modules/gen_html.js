@@ -50,7 +50,7 @@ export default function genHTML(list, arr) {
     });
 
     desc.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter'){
+      if (e.key === 'Enter') {
         arr[i].description = desc.value;
         localStorage.setItem('todoList', JSON.stringify(arr));
         desc.parentElement.parentElement.classList.remove('bisque-bkg');

@@ -1,5 +1,3 @@
-// import genHTML from './gen_html.js';
-/* import { iteratee } from 'lodash'; */
 import addNew from '../src/modules/add.js';
 
 describe('addNew', () => {

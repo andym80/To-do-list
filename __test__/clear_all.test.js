@@ -3,8 +3,8 @@
  */
 
 // import checkComplete from "../src/modules/check_complete.js";
-import clearAll from "../src/modules/clear_all.js";
-import genHTML from "../src/modules/gen_html.js";
+import clearAll from '../src/modules/clear_all.js';
+import genHTML from '../src/modules/gen_html.js';
 
 const listArr = [
   {
@@ -24,7 +24,7 @@ const listArr = [
   },
 ];
 
-beforeAll(()=>{
+beforeAll(() => {
   document.body.innerHTML = `
   <main>
     <div class="heading container">
@@ -44,14 +44,12 @@ beforeAll(()=>{
   </main>
   `;
 
-
   const list = document.getElementById('list');
 
   genHTML(list, listArr);
-})
+});
 
-
-it('clear all checked tasks', () =>{
+it('clear all checked tasks', () => {
   document.getElementById('checkbox-2').click();
   // document.getElementById('clear-all').click();
   clearAll(JSON.parse(localStorage.getItem('todoList')));

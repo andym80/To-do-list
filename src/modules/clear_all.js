@@ -5,6 +5,6 @@ const clearAll = (listArr) => {
   });
 
   localStorage.setItem('todoList', JSON.stringify(listArr));
-}
+};
 
 export default clearAll;

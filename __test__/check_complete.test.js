@@ -2,8 +2,7 @@
  * @jest-environment jsdom
  */
 
-import checkComplete from "../src/modules/check_complete.js";
-import genHTML from "../src/modules/gen_html.js";
+import genHTML from '../src/modules/gen_html.js';
 
 const listArr = [
   {
@@ -23,7 +22,7 @@ const listArr = [
   },
 ];
 
-beforeAll(()=>{
+beforeAll(() => {
   document.body.innerHTML = `
   <main>
     <div class="heading container">
@@ -43,15 +42,14 @@ beforeAll(()=>{
   </main>
   `;
 
-
   const list = document.getElementById('list');
 
   genHTML(list, listArr);
-})
+});
 
 describe('clear completed', () => {
   it('change status for a task', () => {
     document.getElementById('checkbox-2').click();
     expect(JSON.parse(localStorage.getItem('todoList'))[2].completed).toBe(true);
-  })
+  });
 });
