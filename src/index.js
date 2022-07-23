@@ -55,12 +55,6 @@ addNewBtn.addEventListener('click', () => {
 
 const clrBtn = document.getElementById('clear-all');
 clrBtn.addEventListener('click', () => {
-  // listArr = listArr.filter((element) => element.completed === false);
-  // listArr.forEach((element, index) => {
-  //   element.index = index + 1;
-  // });
-
-  // localStorage.setItem('todoList', JSON.stringify(listArr));
   clearAll(listArr);
   reload();
 });

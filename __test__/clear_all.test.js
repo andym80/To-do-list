@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-// import checkComplete from "../src/modules/check_complete.js";
 import clearAll from '../src/modules/clear_all.js';
 import genHTML from '../src/modules/gen_html.js';
 
