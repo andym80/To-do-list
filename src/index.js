@@ -1,7 +1,8 @@
 /* eslint-disable no-alert */
-import genHTML from './gen_html.js';
-import addNew from './add.js';
+import genHTML from './modules/gen_html.js';
+import addNew from './modules/add.js';
 import './style.css';
+import clearAll from './modules/clear_all.js';
 
 let listArr = [];
 
@@ -54,12 +55,7 @@ addNewBtn.addEventListener('click', () => {
 
 const clrBtn = document.getElementById('clear-all');
 clrBtn.addEventListener('click', () => {
-  listArr = listArr.filter((element) => element.completed === false);
-  listArr.forEach((element, index) => {
-    element.index = index + 1;
-  });
-
-  localStorage.setItem('todoList', JSON.stringify(listArr));
+  clearAll(listArr);
   reload();
 });
 

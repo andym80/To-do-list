@@ -9,19 +9,19 @@
  */
 (self["webpackChunkwebpack_tutorial"] = self["webpackChunkwebpack_tutorial"] || []).push([["check"],{
 
-/***/ "./src/check_complete.js":
-/*!*******************************!*\
-  !*** ./src/check_complete.js ***!
-  \*******************************/
+/***/ "./src/modules/check_complete.js":
+/*!***************************************!*\
+  !*** ./src/modules/check_complete.js ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ checkComplete)\n/* harmony export */ });\nfunction checkComplete(arr) {\n  const checkboxes = document.querySelectorAll('.checkbox');\n  for (let i = 0; i < arr.length; i += 1) {\n    arr[i].completed = checkboxes[i].checked;\n  }\n  localStorage.setItem('todoList', JSON.stringify(arr));\n}\n\n//# sourceURL=webpack://webpack-tutorial/./src/check_complete.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ checkComplete)\n/* harmony export */ });\nfunction checkComplete(arr) {\n  const checkboxes = document.querySelectorAll('.checkbox');\n  for (let i = 0; i < arr.length; i += 1) {\n    arr[i].completed = checkboxes[i].checked;\n  }\n  localStorage.setItem('todoList', JSON.stringify(arr));\n}\n\n//# sourceURL=webpack://webpack-tutorial/./src/modules/check_complete.js?");
 
 /***/ })
 
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ var __webpack_exports__ = (__webpack_exec__("./src/check_complete.js"));
+/******/ var __webpack_exports__ = (__webpack_exec__("./src/modules/check_complete.js"));
 /******/ }
 ]);

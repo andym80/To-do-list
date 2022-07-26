@@ -20,7 +20,8 @@ export default function genHTML(list, arr) {
     checkbox.classList.add('checkbox');
     checkbox.checked = arr[i].completed;
     desc.htmlFor = `checkbox-${i}`;
-    desc.innerHTML = arr[i].description;
+    desc.id = `label-${i}`;
+    desc.textContent = arr[i].description;
     if (checkbox.checked) {
       desc.classList.add('done');
     }
@@ -40,26 +41,23 @@ export default function genHTML(list, arr) {
       }
     });
 
-    desc.addEventListener('click', () => {
-      desc.setAttribute('contenteditable', 'true');
-    });
     desc.addEventListener('click', (e) => {
       e.preventDefault();
-    }, false);
-    desc.addEventListener('focus', () => {
+      desc.setAttribute('contenteditable', 'true');
       desc.parentElement.parentElement.classList.add('bisque-bkg');
       desc.parentElement.nextElementSibling.classList.add('red');
       desc.parentElement.nextElementSibling.classList.replace('fa-ellipsis-v', 'fa-trash-alt');
     });
-    desc.addEventListener('blur', () => {
-      arr[i].description = desc.innerHTML;
-      localStorage.setItem('todoList', JSON.stringify(arr));
-      setTimeout(() => {
+
+    desc.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        arr[i].description = desc.value;
+        localStorage.setItem('todoList', JSON.stringify(arr));
         desc.parentElement.parentElement.classList.remove('bisque-bkg');
         desc.parentElement.nextElementSibling.classList.remove('red');
         desc.parentElement.nextElementSibling.classList.replace('fa-trash-alt', 'fa-ellipsis-v');
         desc.setAttribute('contenteditable', 'false');
-      }, 150);
+      }
     });
 
     descCont.appendChild(checkbox);
